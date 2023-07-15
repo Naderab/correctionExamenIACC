@@ -1,0 +1,10 @@
+<table border="1">
+    <tr *ngFor="let f of films">
+        <td>{{f.title}}</td>
+        <td>{{f.description}}</td>
+        <td>{{f.category}}</td>
+        <td>{{f.views}}</td>
+        <td><a [routerLink]="['/details/',f.id]">View Details</a></td>
+
+    </tr>
+</table>

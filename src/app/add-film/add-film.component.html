@@ -1,0 +1,36 @@
+<form #f="ngForm" (ngSubmit)="addFilm()">
+    <div class="form-group">
+        <div class="form-label">
+            Title
+        </div>
+        <input type="text" name="title" class="form-control" [(ngModel)]="film.title" #title="ngModel" required
+            pattern="[a-zA-Z]+">
+        <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
+            <div *ngIf="title.errors?.['required']">Title is required !</div>
+            <div *ngIf="title.errors?.['pattern']">Title invalid !</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            Description
+        </div>
+        <input type="text" name="description" class="form-control" [(ngModel)]="film.description" #description="ngModel"
+            minlength="10">
+        <div class="alert alert-danger" *ngIf="description.invalid && description.touched">
+            Description must have at least 10 characters !
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            Category
+        </div>
+        <input type="text" name="category" class="form-control" [(ngModel)]="film.category" #category="ngModel"
+            pattern="(action|comédie|documentaire)">
+        <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
+            Category invalid !
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="ajouter" class="btn btn-primary" [disabled]="f.invalid">
+    </div>
+</form>
